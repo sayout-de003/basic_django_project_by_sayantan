@@ -1,0 +1,31 @@
+<!-- users/templates/users/login.html -->
+<h2>Login</h2>
+<form method="POST">
+  {% csrf_token %}
+  <!-- Manually render the username field -->
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" />
+  </div>
+
+  <!-- Manually render the password field with toggle functionality -->
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" />
+    <input type="checkbox" id="togglePassword" /> Show Password
+  </div>
+
+  <button type="submit">Login</button>
+</form>
+
+<script>
+  const togglePassword = document.querySelector("#togglePassword");
+  const password = document.querySelector("#password");
+
+  togglePassword.addEventListener("click", function (e) {
+    // Toggle the type attribute
+    const type =
+      password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+  });
+</script>
